@@ -12,6 +12,7 @@ int user2Minutes;
 int user1Seconds;
 int user2Seconds;
 
+/* Method for causing the program to wait for one second */
 void sleep(float seconds)
 {
 	clock_t startClock = clock();
@@ -21,8 +22,10 @@ void sleep(float seconds)
 	return;
 
 }
+/* Output the menu and allow user to select a time control for their game */
 void menu()
 {
+	/* This bool is true if the user selects a correct menu option, and false if they do not */
 	bool userCorrect = true;
 	do
 	{
@@ -61,12 +64,14 @@ void menu()
 			system("CLS");
 			userCorrect = false;
 		}
-	}while(userCorrect == false);
+	}while(userCorrect == false); /* Execute loop while the user has not input a correct choice */
 	system("CLS");
 	
 }
 
-string ClockDisplay(int m1, int s1)
+/* This method is used to output the clock data in a pleasing manner */
+
+string ClockDisplay(int m1, int s1) 
 {
 	string str;
 	if(m1 < 10)
@@ -97,6 +102,8 @@ string ClockDisplay(int m1, int s1)
 	}
 }
 
+ /* This is where the actual waiting for user button input happens, as well as the clock counting */
+
 void chessClock(int minutes1, int seconds1, int minutes2, int seconds2)
 {
 
@@ -107,9 +114,9 @@ void chessClock(int minutes1, int seconds1, int minutes2, int seconds2)
 	bool loop1 = true;
 	bool loop2 = false;
 
-	while((minutes1 >= 0) && (minutes2 >= 0))
+	while((minutes1 >= 0) && (minutes2 >= 0)) /* Main loop that executes while both users still have time */
 	{
-		while(loop1 && ((minutes1 >= 0) && (minutes2 >= 0)))
+		while(loop1 && ((minutes1 >= 0) && (minutes2 >= 0))) /* Output the clock display, and wait for user to hit a key */
 		{
 			cout << "\t\t\t\t" << "White: "<< ClockDisplay(minutes1, seconds1) << "\t\t\t\t" << "Black: " << ClockDisplay(minutes2, seconds2) << endl;
 			if(seconds1 == 0)
@@ -121,7 +128,7 @@ void chessClock(int minutes1, int seconds1, int minutes2, int seconds2)
 			sleep(1.0);
 			system("CLS");
 
-			if(_kbhit())
+			if(_kbhit()) /* Terminate this loop, and enter the next one */
 			{
 				loop1 = false;
 				loop2 = true;
@@ -144,7 +151,7 @@ void chessClock(int minutes1, int seconds1, int minutes2, int seconds2)
 			sleep(1.0);
 			system("CLS");
 
-			if(_kbhit())
+			if(_kbhit()) /* Terminate this loop, and enter the next one */
 			{
 				loop2 = false;
 				loop1 = true;
