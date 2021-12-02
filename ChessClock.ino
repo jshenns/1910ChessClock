@@ -87,19 +87,5 @@ void loop() {
 
     buttonCheck(2000);
     
-  /*
-  if(digitalRead(BUTTON)==HIGH)
-  {
-    lcd.setCursor(0,1);
-    lcd.print("HIGH");
-    delay(1000);
-  }
-  else if(digitalRead(BUTTON) == LOW)
-  {
-    lcd.setCursor(0,1);
-    lcd.print("LOW!");
-    delay(200);
-  }
-  */
-  
+
 }
